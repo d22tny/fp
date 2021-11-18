@@ -1,14 +1,14 @@
 #include <stdio.h>
 int main()
 {
-    long a,b,c;
+    int a,b,c;
     FILE *f;
     if(!(f=fopen("numere.in.txt","r")))
         printf ("Eroare la deschiderea fisierului text!");
     else {
-        fscanf(f,"%li",&a);
-        fscanf(f,"%li",&b);
-        fscanf(f,"%li",&c);
+        fscanf(f,"%d",&a);
+        fscanf(f,"%d",&b);
+        fscanf(f,"%d",&c);
         fclose(f);
         if ((c-b) == (b-a)) {
             printf("Numerele pot fi termenii unei progresii aritmetice\n");
