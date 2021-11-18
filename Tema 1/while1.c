@@ -1,25 +1,30 @@
-#include<stdio.h>
-void main()
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
 {
-    int b,n,i,r,digit,p,count=0;
-    char a[100];
-    printf("\nIntroduceti numarul in baza 10:\n");
-    scanf("%d",&n);
-    printf("\nIntroduceti baza in care sa fie convertit:\n");
-    scanf("%d",&b);
-    p=n;
-    while (p!= 0) {
-        r=p%b;
-        digit='0'+r;
-        if(digit>'9') {
-            digit=digit+7;
+    int m,n,newm,newn;
+    printf("Introduceti numaratorul fractiei\n");
+    scanf("%d", &m);
+    printf("Introduceti numitorul fractiei\n");
+    scanf("%d", &n);
+    if (cmmdc(m,n) != 1) {
+        newm = m/cmmdc(m,n);
+        newn = n/cmmdc(m,n);
+        printf("Fractia \n%d\n--\n%d\n\na fost simplificata. Aceasta a ajuns in forma \n\n%d\n--\n%d\n , care este ireductibila",m,n,newm,newn);
+    } else {
+        printf("Fractia nu poate fi simplificata!");
+    }
+    return 0;
+}
+
+int cmmdc(int a, int b) {
+    while (a!=b) {
+        if (a>b) {
+            a = a - b;
+        } else {
+            b = b - a;
         }
-        a[count]=digit;
-        count++;
-        p=p/b;
-    } 
-    printf("\nbase %d equivalent of num %d is ",b,n);
-    for(i=count-1;i>=0;--i)
-    printf("%c",a[i]);
-    printf(".\n");
+    }
+    return a;
 }
